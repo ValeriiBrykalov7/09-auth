@@ -12,3 +12,15 @@ export type NewNote = {
   content: string;
   tag: 'Todo' | 'Work' | 'Personal' | 'Meeting' | 'Shopping';
 };
+
+export interface NotesHttpResponse {
+  notes: Note[];
+  totalPages: number;
+}
+
+export interface FetchNotesParams {
+  search?: string;
+  page?: number;
+  perPage: number;
+  tag?: string;
+}

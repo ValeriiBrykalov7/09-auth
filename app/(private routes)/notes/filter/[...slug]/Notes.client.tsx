@@ -7,9 +7,9 @@ import { useDebounce } from 'use-debounce';
 
 import NoteList from '@/components/NoteList/NoteList';
 import SearchBox from '@/components/SearchBox/SearchBox';
-import { fetchNotes } from '@/lib/api';
 import Pagination from '@/components/Pagination/Pagination';
 import Link from 'next/link';
+import { fetchNotes } from '@/lib/api/clientApi';
 
 type NotesClientProps = {
   category: string;
