@@ -16,6 +16,10 @@ export type Request = {
   password: string;
 };
 
+export type UpdateUserRequest = {
+  username?: string;
+};
+
 const tags = ['all', 'Todo', 'Personal', 'Work', 'Meeting', 'Shopping'];
 
 export const register = async (data: Request) => {
@@ -105,4 +109,9 @@ export const getMe = async () => {
 
 export const logout = async (): Promise<void> => {
   await nextServer.post('/auth/logout');
+};
+
+export const updateMe = async (payload: UpdateUserRequest) => {
+  const { data } = await nextServer.patch<User>('/users/me', payload);
+  return data;
 };
