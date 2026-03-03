@@ -80,7 +80,7 @@ export const createNote = async (newNote: NewNote): Promise<Note> => {
 };
 
 export const deleteNote = async (id: string): Promise<Note> => {
-  const response = await nextServer.delete<Note>(`notes/${id}`, {
+  const response = await nextServer.delete<Note>(`/notes/${id}`, {
     headers: {
       accept: 'application/json',
     },
@@ -89,7 +89,7 @@ export const deleteNote = async (id: string): Promise<Note> => {
 };
 
 export const fetchNoteById = async (id: Note['id']) => {
-  const response = await nextServer.get<Note>(`notes/${id}`, {
+  const response = await nextServer.get<Note>(`/notes/${id}`, {
     headers: {
       accept: 'application/json',
     },

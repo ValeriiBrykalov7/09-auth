@@ -28,9 +28,18 @@ export async function proxy(request: NextRequest) {
         const cookieArray = Array.isArray(setCookie) ? setCookie : [setCookie];
         for (const cookieStr of cookieArray) {
           const parsed = parse(cookieStr);
+
+          const normalized = Object.fromEntries(
+            Object.entries(parsed).map(([key, value]) => [
+              key.toLowerCase(),
+              value,
+            ]),
+          );
           const options = {
-            expires: parsed.Expires ? new Date(parsed.Expires) : undefined,
-            path: parsed.Path,
+            expires: normalized.Expires
+              ? new Date(normalized.Expires)
+              : undefined,
+            path: normalized.Path,
             maxAge: Number(parsed['Max-Age']),
           };
           if (parsed.accessToken)
@@ -39,18 +48,10 @@ export async function proxy(request: NextRequest) {
             cookieStore.set('refreshToken', parsed.refreshToken, options);
         }
         if (isPublicRoute) {
-          return NextResponse.redirect(new URL('/', request.url), {
-            headers: {
-              Cookie: cookieStore.toString(),
-            },
-          });
+          return NextResponse.redirect(new URL('/', request.url));
         }
         if (isPrivateRoute) {
-          return NextResponse.next({
-            headers: {
-              Cookie: cookieStore.toString(),
-            },
-          });
+          return NextResponse.next();
         }
       }
     }
@@ -60,6 +61,9 @@ export async function proxy(request: NextRequest) {
     if (isPrivateRoute) {
       return NextResponse.redirect(new URL('/sign-in', request.url));
     }
+    if (!isPrivateRoute && !isPublicRoute) {
+      return NextResponse.next();
+    }
   }
   if (isPublicRoute) {
     return NextResponse.redirect(new URL('/', request.url));
@@ -67,8 +71,11 @@ export async function proxy(request: NextRequest) {
   if (isPrivateRoute) {
     return NextResponse.next();
   }
+  if (!isPrivateRoute && !isPublicRoute) {
+    return NextResponse.next();
+  }
 }
 
 export const config = {
-  matcher: ['/profile/:path*', '/notes:path*', '/sign-in', '/sign-up'],
+  matcher: ['/profile/:path*', '/notes/:path*', '/sign-in', '/sign-up'],
 };
