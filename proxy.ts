@@ -36,11 +36,11 @@ export async function proxy(request: NextRequest) {
             ]),
           );
           const options = {
-            expires: normalized.Expires
-              ? new Date(normalized.Expires)
+            expires: normalized.expires
+              ? new Date(normalized.expires)
               : undefined,
-            path: normalized.Path,
-            maxAge: Number(parsed['Max-Age']),
+            path: normalized.path,
+            maxAge: Number(normalized['max-Age']),
           };
           if (parsed.accessToken)
             cookieStore.set('accessToken', parsed.accessToken, options);
