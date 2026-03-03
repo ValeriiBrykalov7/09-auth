@@ -40,7 +40,9 @@ export async function proxy(request: NextRequest) {
               ? new Date(normalized.expires)
               : undefined,
             path: normalized.path,
-            maxAge: Number(normalized['max-Age']),
+            maxAge: normalized['max-age']
+              ? Number(normalized['max-age'])
+              : undefined,
           };
           if (parsed.accessToken)
             cookieStore.set('accessToken', parsed.accessToken, options);
