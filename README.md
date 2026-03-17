@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📝 NoteHub
 
-## Getting Started
+Modern full-stack-ready notes management application with authentication, built using Next.js and optimized for performance, scalability, and user experience.
 
-First, run the development server:
+## 🚀 Live Demo
+🔗 https://09-auth-smoky-theta.vercel.app
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 📦 GitHub Repository
+🔗 https://github.com/ValeriiBrykalov7/09-auth
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ✨ Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- 🔐 User authentication (login / logout)
+- 📝 Full CRUD operations for notes
+- 🔎 Search with debouncing
+- 📂 Filtering and sorting notes
+- ⚡ Data caching and synchronization
+- 🧭 Advanced routing (dynamic, parallel, catch-all)
+- 🧠 Global state management
+- ✅ Form validation
+- 🌐 SEO optimization (Open Graph & meta tags)
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠 Tech Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Frontend:**
+- Next.js (App Router)
+- React
+- TypeScript
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**State & Data:**
+- Zustand (global state)
+- TanStack Query (server state & caching)
+- Axios (API requests)
 
-## Deploy on Vercel
+**Forms & Validation:**
+- Formik
+- Yup
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**UX & Performance:**
+- use-debounce
+- Optimized rendering & caching
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🧱 Architecture Highlights
+
+- ⚙️ Implemented scalable routing using Next.js App Router  
+- 🔄 Separated client state (Zustand) and server state (TanStack Query)  
+- 📡 Efficient API integration with caching and background updates  
+- ⚡ Debounced search to reduce unnecessary requests  
+- 🔐 Protected routes based on authentication state  
+
+---
+
+## 🧑‍💻 My Role
+
+- Designed and developed the application from scratch  
+- Built authentication flow and protected pages  
+- Implemented API integration and caching logic  
+- Optimized performance and UX  
+- Structured scalable and maintainable architecture  
+
+---
+
+## 🧠 Challenges & Solutions
+
+**Problem:** Too many API calls during search  
+**Solution:** Implemented debouncing to reduce requests and improve performance  
+
+**Problem:** Managing both server and client state  
+**Solution:** Used TanStack Query for server state and Zustand for global UI state  
