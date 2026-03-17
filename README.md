@@ -6,7 +6,7 @@ Modern full-stack-ready notes management application with authentication, built 
 🔗 https://09-auth-smoky-theta.vercel.app
 
 ## 📦 GitHub Repository
-🔗 https://github.com/ValeriiBrykalov7/09-auth
+🔗 https://github.com/ValeriiBrykalov7/notehub
 
 ---
 
